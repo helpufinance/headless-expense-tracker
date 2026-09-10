@@ -6,6 +6,8 @@
 
 # Headless Expense Tracker
 
+[![npm version](https://img.shields.io/npm/v/%40helpu%2Fheadless-expense-tracker?logo=npm)](https://www.npmjs.com/package/@helpu/headless-expense-tracker)
+
 A headless, framework-agnostic expense tracker with localStorage persistence, category management, and analytics.
 
 ## What is HelpU Finance?
