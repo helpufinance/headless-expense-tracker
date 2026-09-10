@@ -77,7 +77,7 @@ jobs:
         env:
           VERSION: ${{ steps.version.outputs.version }}
         run: |
-          npm version "$VERSION" --no-git-tag-version
+          npm version "$VERSION" --no-git-tag-version --allow-same-version
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
@@ -86,7 +86,11 @@ jobs:
           VERSION: ${{ steps.version.outputs.version }}
         run: |
           git add package.json package-lock.json
-          git commit -m "chore: bump version to $VERSION"
+          if git diff --cached --quiet; then
+            echo "Package version is already $VERSION; no version bump commit needed."
+          else
+            git commit -m "chore: bump version to $VERSION"
+          fi
 
       - name: Install dependencies
         run: bun install
