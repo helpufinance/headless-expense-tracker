@@ -1,0 +1,19 @@
+{
+    "$schema": "./node_modules/oxlint/configuration_schema.json",
+    "categories": {
+        "correctness": "error",
+        "suspicious": "warn"
+    },
+    "plugins": ["typescript"],
+    "rules": {
+        "eslint/no-unused-vars": [
+            "error",
+            {
+                "argsIgnorePattern": "^_",
+                "caughtErrorsIgnorePattern": "^_",
+                "varsIgnorePattern": "^_"
+            }
+        ]
+    },
+    "ignorePatterns": ["dist/**", "node_modules/**"]
+}
