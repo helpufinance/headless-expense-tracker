@@ -1,0 +1,74 @@
+{
+    "name": "@helpu/headless-expense-tracker",
+    "version": "1.0.0",
+    "description": "A headless, framework-agnostic expense tracker with localStorage persistence, category management, and analytics",
+    "keywords": [
+        "expense",
+        "tracker",
+        "finance",
+        "budgeting",
+        "spending",
+        "personal-finance",
+        "headless",
+        "localStorage"
+    ],
+    "author": "HelpU Finance",
+    "license": "PolyForm-Noncommercial-1.0.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/helpufinance/headless-expense-tracker.git"
+    },
+    "homepage": "https://github.com/helpufinance/headless-expense-tracker#readme",
+    "bugs": {
+        "url": "https://github.com/helpufinance/headless-expense-tracker/issues"
+    },
+    "type": "module",
+    "main": "./dist/index.cjs",
+    "module": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./dist/index.d.ts",
+                "default": "./dist/index.js"
+            },
+            "require": {
+                "types": "./dist/index.d.cts",
+                "default": "./dist/index.cjs"
+            }
+        }
+    },
+    "files": [
+        "dist",
+        "README.md",
+        "LICENSE",
+        "COMMERCIAL-LICENSING.md"
+    ],
+    "sideEffects": false,
+    "engines": {
+        "node": ">=18.0.0"
+    },
+    "scripts": {
+        "build": "rolldown -c rolldown.config.ts && tsc --emitDeclarationOnly --declaration --outDir dist",
+        "dev": "rolldown -c rolldown.config.ts --watch",
+        "typecheck": "tsc --noEmit",
+        "test": "vitest run",
+        "test:coverage": "vitest run --coverage",
+        "test:watch": "vitest",
+        "lint": "oxlint src/*.ts tests/*.ts",
+        "lint:fix": "oxlint --fix src/*.ts tests/*.ts",
+        "format": "oxfmt src/*.ts tests/*.ts rolldown.config.ts vitest.config.ts",
+        "format:check": "oxfmt --check src/*.ts tests/*.ts rolldown.config.ts vitest.config.ts",
+        "clean": "rm -rf dist",
+        "prepublishOnly": "npm run clean && npm run build"
+    },
+    "devDependencies": {
+        "@types/node": "^22.0.0",
+        "@vitest/coverage-v8": "^5.0.0",
+        "oxfmt": "^0.67.0",
+        "oxlint": "^1.82.0",
+        "rolldown": "^1.2.8",
+        "typescript": "^7.0.2",
+        "vitest": "^5.0.0"
+    }
+}
