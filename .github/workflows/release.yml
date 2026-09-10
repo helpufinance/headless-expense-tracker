@@ -1,4 +1,5 @@
 name: Release
+# Manual npm release workflow
 
 on:
   workflow_dispatch:
